@@ -38,10 +38,15 @@ Steps used to complete task:
 7.	I used brace expansion to create the following directories:
     - ~/backups/freemem, ~/backups/diskuse, ~/backups/openlist and ~/backups/freedisk
 8. I edit the “system.sh” script file so that it that does the following:
+
     •  Prints the amount of free memory on the system and saves it to ~/backups/freemem/free_mem.txt.
+    
     •  Prints disk usage and saves it to ~/backups/diskuse/disk_usage.txt.
+    
     •  Lists all open files and saves it to ~/backups/openlist/open_list.txt.
+    
     •  Prints file system disk space statistics and saves it to ~/backups/freedisk/free_disk.txt.
+    
 9. I saved the file and modified the “system.sh” file permissions so that it’s executable.
 10.	I tested the script with sudo ./system.sh.
 11.	I automated the script for  “system.sh” by adding it to the weekly system-wide cron directory.
@@ -50,9 +55,13 @@ Steps used to complete task:
 14.	I used systemctl to verify that the auditd service was active and running.
 15.	I ran sudo nano /etc/audit/auditd.conf to edit the “auditd config” file using the number of rotated logs as seven and the maximum log file size as 35.
 16.	I ran sudo nano /etc/audit/rules.d/audit.rules to edit the rules for auditd. Creating rules that watch the following paths:
+	
     •  For /etc/shadow, I set wra for the permissions to monitor and set the keyname for this rule to hashpass_audit.
+    
     •  For /etc/passwd, I set wra for the permissions to monitor and set the keyname for this rule to userpass_audit.
+    
     •  For /var/log/auth.log, I set wra for the permissions to monitor and set the keyname for this rule to authlog_audit.
+    
 17. I restarted the auditd daemon
 18.	I used sudo to produce an audit report that returns results for all user authentications.
 19.	I used auditctl to add another rule that watches the /var/log/cron directory.
